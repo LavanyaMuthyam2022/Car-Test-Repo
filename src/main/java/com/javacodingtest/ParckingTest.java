@@ -22,8 +22,8 @@ public class ParckingTest {
 	}
 
 	public static void toTestPakingFull() throws ParkingException, InvalidVehicleNoException {
-		List<Car> vehicleList = new ArrayList<>();
-		List<Ticket> ticketList = new ArrayList<>();
+		List<Car> vehicleList = new ArrayList<Car>();
+		List<Ticket> ticketList = new ArrayList<Ticket>();
 		
 	
 		ParkingLot parkingLot = ParkingLot.getParkingLot();
