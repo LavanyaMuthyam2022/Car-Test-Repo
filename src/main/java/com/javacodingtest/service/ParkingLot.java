@@ -39,7 +39,7 @@ public class ParkingLot implements ParkingCheck{
 			slotAvailable.add(new Slot(i));
 		}
 
-		System.out.printf("Created a parking lot with %s slots %n", numberOfParkingSlots);
+		System.out.printf("Created a parking lot with slots ", numberOfParkingSlots);
 		return true;
 	}
 	
@@ -48,7 +48,7 @@ public class ParkingLot implements ParkingCheck{
 		Slot nextAvailableSlot;
 		nextAvailableSlot = getNextAvailableFourWheelerSlot();
 		nextAvailableSlot.occupySlot(vehicle);
-		System.out.printf("Allocated slot number: %d \n", nextAvailableSlot.getSlotNumber());
+		System.out.printf("Slot Allocated: %d \n", nextAvailableSlot.getSlotNumber());
 		Ticket ticket = new Ticket(nextAvailableSlot.getSlotNumber(), vehicle.getVehicleNumber(), new Date());
 		return ticket;
 	}
@@ -73,9 +73,9 @@ public class ParkingLot implements ParkingCheck{
 		int duration = getParkedHours(ticket.getDate(), new Date());
 		
 //		int duration = 2;
-		totalCharge = parkingCharges.getCharges(duration);
+		totalCharge = parkingCharges.generateCharges(duration);
 		
-		System.out.println(" Vehicle "+ticket.getVehicleNumber() +" at slot number "
+		System.out.println(" Car "+ticket.getVehicleNumber() +" at slot "
 				+ticket.getSlotNumber() + " was parked for " + duration + " total charge is " 
 				+ totalCharge);
 		

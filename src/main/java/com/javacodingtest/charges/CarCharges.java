@@ -2,7 +2,7 @@ package com.javacodingtest.charges;
 
 public class CarCharges implements ParkingCharges{
 
-	public int getCharges(int hours) {
+	public int generateCharges(int hours) {
 		// TODO Auto-generated method stub
 		if(hours < 1) {
 			return 2;
