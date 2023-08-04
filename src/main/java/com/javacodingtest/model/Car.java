@@ -1,11 +1,11 @@
 package com.javacodingtest.model;
 
-import com.javacodingtest.model.VehicleSize;
 
-public class Vehicle {
+
+public class Car {
 	private String vehicleNumber;
 	
-	public Vehicle(String vehicleNumber) {
+	public Car(String vehicleNumber) {
 		this.vehicleNumber = vehicleNumber;
 	}
 

@@ -1,13 +1,13 @@
 package com.javacodingtest.model;
 
-import com.javacodingtest.model.Vehicle;
+import com.javacodingtest.model.Car;
 
 
 public class Slot {
 	
 	private int slotNumber;
 	private boolean isEmpty;
-	private Vehicle parkVehicle;
+	private Car parkVehicle;
 
 	public Slot(int slotNumber) {
 		this.slotNumber = slotNumber;
@@ -30,11 +30,11 @@ public class Slot {
 		this.isEmpty = isEmpty;
 	}
 
-	public Vehicle getParkVehicle() {
+	public Car getParkVehicle() {
 		return parkVehicle;
 	}
 
-	public void setParkVehicle(Vehicle parkVehicle) {
+	public void setParkVehicle(Car parkVehicle) {
 		this.parkVehicle = parkVehicle;
 	}
 	
@@ -44,7 +44,7 @@ public class Slot {
 		this.isEmpty = true;
 	}
     // method to check and allocate the slot
-	public void occupySlot(Vehicle parkVehicle) {
+	public void occupySlot(Car parkVehicle) {
 		this.parkVehicle = parkVehicle;
 		this.isEmpty = false;
 	}

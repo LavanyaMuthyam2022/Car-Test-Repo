@@ -2,7 +2,6 @@ package com.javacodingtest.model;
 
 import java.util.Date;
 
-import com.javacodingtest.model.VehicleSize;
 
 public class Ticket {
 	

@@ -4,8 +4,7 @@ import com.javacodingtest.charges.CarCharges;
 import com.javacodingtest.exception.InvalidVehicleNoException;
 import com.javacodingtest.exception.ParkingException;
 import com.javacodingtest.model.Ticket;
-import com.javacodingtest.model.Vehicle;
-import com.javacodingtest.model.VehicleSize;
+import com.javacodingtest.model.Car;
 import com.javacodingtest.service.ParkingLot;
 
 public class ParckingTest {
@@ -19,12 +18,12 @@ public class ParckingTest {
 
 		parkingLot.setParkingSlots(100);
 		
-		Vehicle vehicle = new Vehicle("FG123");
+		Car vehicle = new Car("FG123");
 
 		Ticket ticket = parkingLot.park(vehicle);
 		System.out.println(ticket);
 		
-		int cost = parkingLot.unPark(ticket, new CarCharges());
+		int cost = parkingLot.remove(ticket, new CarCharges());
 		System.out.println(cost);
 		
 		//Testing with 0 slots

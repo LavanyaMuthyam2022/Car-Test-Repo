@@ -8,21 +8,21 @@ import com.javacodingtest.charges.ParkingCharges;
 import com.javacodingtest.exception.InvalidVehicleNoException;
 import com.javacodingtest.exception.ParkingException;
 import com.javacodingtest.model.Ticket;
-import com.javacodingtest.model.Vehicle;
+import com.javacodingtest.model.Car;
 import com.javacodingtest.service.ParkingCheck;
 import com.javacodingtest.model.Slot;
 import com.javacodingtest.service.ParkingLot;
 import com.javacodingtest.exception.InvalidVehicleNoException;
 import com.javacodingtest.exception.ParkingException;
-import com.javacodingtest.model.VehicleSize;
+
 
 public class ParkingLot implements ParkingCheck{
 	
 	private static ParkingLot parkingLot;
-	private final List<Slot> fourWheeler;
+	private final List<Slot> slotAvailable;
 	
 	private ParkingLot() {
-		this.fourWheeler = new ArrayList<Slot>();
+		this.slotAvailable = new ArrayList<Slot>();
 	}
 	
 	public static ParkingLot getParkingLot() {
@@ -36,14 +36,14 @@ public class ParkingLot implements ParkingCheck{
 	public boolean setParkingSlots(int numberOfParkingSlots) {
 
 		for (int i = 1; i <= numberOfParkingSlots; i++) {
-			fourWheeler.add(new Slot(i));
+			slotAvailable.add(new Slot(i));
 		}
 
-		System.out.printf("Created a four wheeler parking lot with %s slots %n", numberOfParkingSlots);
+		System.out.printf("Created a parking lot with %s slots %n", numberOfParkingSlots);
 		return true;
 	}
 	
-	public Ticket park(Vehicle vehicle) throws ParkingException {
+	public Ticket park(Car vehicle) throws ParkingException {
 		// TODO Auto-generated method stub
 		Slot nextAvailableSlot;
 		nextAvailableSlot = getNextAvailableFourWheelerSlot();
@@ -57,15 +57,15 @@ public class ParkingLot implements ParkingCheck{
 
 	private Slot getNextAvailableFourWheelerSlot() throws ParkingException{
 		// TODO Auto-generated method stub
-		for (Slot slot : fourWheeler) {
+		for (Slot slot : slotAvailable) {
 			if (slot.isEmpty()) {
 				return slot;
 			}
 		}
-		throw new ParkingException("No Empty Slot available");
+		throw new ParkingException("the car park is full");
 	}
 
-	public int unPark(Ticket ticket, ParkingCharges parkingCharges) throws InvalidVehicleNoException {
+	public int remove(Ticket ticket, ParkingCharges parkingCharges) throws InvalidVehicleNoException {
 		int totalCharge = 0;
 		Slot slot;
 		slot = getSlot(ticket.getVehicleNumber());
@@ -92,15 +92,15 @@ public class ParkingLot implements ParkingCheck{
 	private Slot getSlot(String vehicleNumber) throws InvalidVehicleNoException {
 		// TODO Auto-generated method stub
 		
-		for (Slot slot : fourWheeler) {
-			Vehicle vehicle = slot.getParkVehicle();
+		for (Slot slot : slotAvailable) {
+			Car vehicle = slot.getParkVehicle();
 			if (vehicle != null && vehicle.getVehicleNumber().equals(vehicleNumber)) {
 				return slot;
 			}
 			
 			
 		}
-		throw new InvalidVehicleNoException("FourWheeler vehicle with registration number " + vehicleNumber + " not found");
+		throw new InvalidVehicleNoException("Vehicle with registration number " + vehicleNumber + " not found");
 		
 	}
 }
