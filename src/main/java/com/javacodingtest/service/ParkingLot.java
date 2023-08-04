@@ -62,7 +62,7 @@ public class ParkingLot implements ParkingCheck{
 				return slot;
 			}
 		}
-		throw new ParkingException("the car park is full");
+		throw new ParkingException("The car park is full");
 	}
 
 	public int remove(Ticket ticket, ParkingCharges parkingCharges) throws InvalidVehicleNoException {
@@ -76,7 +76,7 @@ public class ParkingLot implements ParkingCheck{
 		totalCharge = parkingCharges.generateCharges(duration);
 		
 		System.out.println(" Car "+ticket.getVehicleNumber() +" at slot "
-				+ticket.getSlotNumber() + " was parked for " + duration + " total charge is " 
+				+ticket.getSlotNumber() + " was parked for " + duration + " total charge is £" 
 				+ totalCharge);
 		
 	return totalCharge;
